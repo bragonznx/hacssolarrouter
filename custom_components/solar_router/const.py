@@ -58,8 +58,12 @@ DEFAULT_AMBIENT_TEMP: Final = 20  # °C
 # Off-peak hours (for fallback heating)
 CONF_OFFPEAK_START: Final = "offpeak_start"
 CONF_OFFPEAK_END: Final = "offpeak_end"
-DEFAULT_OFFPEAK_START: Final = "22:00"
+DEFAULT_OFFPEAK_START: Final = "02:00"
 DEFAULT_OFFPEAK_END: Final = "06:00"
+
+# Fallback check time (when to check if daily minimum was met)
+CONF_FALLBACK_CHECK_TIME: Final = "fallback_check_time"
+DEFAULT_FALLBACK_CHECK_TIME: Final = "20:00"  # Check at 8 PM if enough heating happened
 
 # Time windows
 CONF_SOLAR_START: Final = "solar_start"

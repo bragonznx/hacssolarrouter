@@ -44,12 +44,13 @@
       },
       "time_windows": {
         "title": "Time Windows",
-        "description": "Configure time windows for solar routing and off-peak fallback.",
+        "description": "Configure time windows for solar routing and off-peak fallback. Fallback check time is when the system checks if minimum heating was achieved during solar hours.",
         "data": {
           "solar_start": "Solar Window Start",
           "solar_end": "Solar Window End",
-          "offpeak_start": "Off-Peak Start",
-          "offpeak_end": "Off-Peak End"
+          "fallback_check_time": "Fallback Check Time (when to check if daily minimum was met)",
+          "offpeak_start": "Off-Peak Forced Heating Start (cheap electricity)",
+          "offpeak_end": "Off-Peak Forced Heating End"
         }
       },
       "usage_patterns": {
@@ -120,8 +121,9 @@
         "data": {
           "solar_start": "Solar Window Start",
           "solar_end": "Solar Window End",
-          "offpeak_start": "Off-Peak Start",
-          "offpeak_end": "Off-Peak End"
+          "fallback_check_time": "Fallback Check Time",
+          "offpeak_start": "Off-Peak Forced Heating Start",
+          "offpeak_end": "Off-Peak Forced Heating End"
         }
       },
       "usage_patterns": {

@@ -19,6 +19,7 @@ from .const import (
     CONF_COLD_WATER_TEMP,
     CONF_DISH_DURATION,
     CONF_DISH_FLOW_RATE,
+    CONF_FALLBACK_CHECK_TIME,
     CONF_GRID_POWER_ENTITY,
     CONF_HEATER_POWER_ENTITY,
     CONF_HEATER_SWITCH_ENTITY,
@@ -38,6 +39,7 @@ from .const import (
     DEFAULT_COLD_WATER_TEMP,
     DEFAULT_DISH_DURATION,
     DEFAULT_DISH_FLOW_RATE,
+    DEFAULT_FALLBACK_CHECK_TIME,
     DEFAULT_HEATER_WATTAGE,
     DEFAULT_MIN_DAILY_HEATING_TIME,
     DEFAULT_MIN_SOC,
@@ -238,6 +240,9 @@ class SolarRouterConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     ): get_time_selector(),
                     vol.Required(
                         CONF_SOLAR_END, default=DEFAULT_SOLAR_END
+                    ): get_time_selector(),
+                    vol.Required(
+                        CONF_FALLBACK_CHECK_TIME, default=DEFAULT_FALLBACK_CHECK_TIME
                     ): get_time_selector(),
                     vol.Required(
                         CONF_OFFPEAK_START, default=DEFAULT_OFFPEAK_START
@@ -450,6 +455,10 @@ class SolarRouterOptionsFlow(config_entries.OptionsFlow):
                     vol.Required(
                         CONF_SOLAR_END,
                         default=current.get(CONF_SOLAR_END, DEFAULT_SOLAR_END),
+                    ): get_time_selector(),
+                    vol.Required(
+                        CONF_FALLBACK_CHECK_TIME,
+                        default=current.get(CONF_FALLBACK_CHECK_TIME, DEFAULT_FALLBACK_CHECK_TIME),
                     ): get_time_selector(),
                     vol.Required(
                         CONF_OFFPEAK_START,

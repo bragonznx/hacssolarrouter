@@ -2,99 +2,17 @@ title: Solar Router
 path: solar-router
 icon: mdi:water-boiler
 type: sections
-max_columns: 3
+max_columns: 2
 sections:
-  # Section 1: Energy Flow & Status
+  # Section 1: Energy Flow Visualization (Built-in, no dependencies)
   - type: grid
     cards:
-      # Energy Flow Card (requires power-flow-card-plus from HACS)
-      - type: custom:power-flow-card-plus
-        entities:
-          battery:
-            entity: sensor.victron_battery_soc
-            state_of_charge: sensor.victron_battery_soc
-          grid:
-            entity: sensor.victron_grid_power
-            invert_state: true
-          solar:
-            entity: sensor.victron_solar_power
-          home:
-            entity: sensor.victron_consumption
-          individual:
-            - entity: sensor.solar_router_solar_power_mirror
-              name: Water Heater
-              icon: mdi:water-boiler
-              color: '#ff6b6b'
-              display_zero: true
-        watt_threshold: 0
-        kw_decimals: 2
-        min_flow_rate: 0.75
-        max_flow_rate: 6
-        w_decimals: 0
-        clickable_entities: true
+      - type: custom:solar-router-flow-card
+        title: Solar Router
+        show_header: true
+        animation_speed: 1
 
-  # Section 2: Tank Status
-  - type: grid
-    title: Water Tank
-    cards:
-      - type: gauge
-        entity: sensor.solar_router_tank_temp_estimate
-        name: Temperature
-        min: 10
-        max: 70
-        severity:
-          green: 45
-          yellow: 35
-          red: 0
-        needle: true
-
-      - type: tile
-        entity: sensor.solar_router_estimated_showers
-        name: Showers Available
-        icon: mdi:shower-head
-        color: blue
-
-      - type: tile
-        entity: sensor.solar_router_energy_content
-        name: Tank Energy
-        icon: mdi:water-thermometer
-        color: orange
-
-      - type: tile
-        entity: sensor.solar_router_time_to_cold
-        name: Time Until Cold
-        icon: mdi:timer-sand
-        color: cyan
-
-  # Section 3: Routing Status
-  - type: grid
-    title: Routing Status
-    cards:
-      - type: tile
-        entity: binary_sensor.solar_router_is_heating
-        name: Heating Active
-        icon: mdi:fire
-        color: red
-
-      - type: tile
-        entity: sensor.solar_router_active_rule
-        name: Active Rule
-        icon: mdi:state-machine
-        color: purple
-
-      - type: tile
-        entity: sensor.solar_router_heating_mode
-        name: Mode
-        icon: mdi:cog
-        color: grey
-
-      - type: tile
-        entity: binary_sensor.solar_router_fallback_needed
-        name: Fallback Needed
-        icon: mdi:alert-circle
-        color: amber
-
-  # Section 4: Controls
+  # Section 2: Controls
   - type: grid
     title: Controls
     cards:
@@ -102,6 +20,7 @@ sections:
         entity: switch.solar_router_auto_mode
         name: Auto Mode
         icon: mdi:robot
+        color: green
         tap_action:
           action: toggle
 
@@ -109,6 +28,7 @@ sections:
         entity: switch.solar_router_offpeak_fallback
         name: Off-Peak Fallback
         icon: mdi:clock-alert
+        color: blue
         tap_action:
           action: toggle
 
@@ -120,7 +40,7 @@ sections:
         tap_action:
           action: toggle
 
-  # Section 5: Conditions
+  # Section 3: Conditions
   - type: grid
     title: Routing Conditions
     cards:
@@ -134,43 +54,21 @@ sections:
         entity: binary_sensor.solar_router_solar_sufficient
         name: Solar OK
         icon: mdi:solar-power
-        color: yellow
+        color: amber
+
+      - type: tile
+        entity: binary_sensor.solar_router_fallback_needed
+        name: Fallback Needed
+        icon: mdi:alert-circle
+        color: orange
 
       - type: tile
         entity: binary_sensor.solar_router_tank_hot
         name: Tank Warm
         icon: mdi:thermometer-check
-        color: orange
+        color: red
 
-      - type: tile
-        entity: binary_sensor.solar_router_tank_cold
-        name: Tank Cold
-        icon: mdi:snowflake-thermometer
-        color: cyan
-
-  # Section 6: Daily Statistics
-  - type: grid
-    title: Today's Statistics
-    cards:
-      - type: tile
-        entity: sensor.solar_router_daily_heating_time
-        name: Heating Time
-        icon: mdi:clock-outline
-        color: blue
-
-      - type: tile
-        entity: sensor.solar_router_daily_heating_energy
-        name: Energy Used
-        icon: mdi:lightning-bolt
-        color: yellow
-
-      - type: tile
-        entity: sensor.solar_router_heating_sessions_today
-        name: Sessions
-        icon: mdi:counter
-        color: purple
-
-  # Section 7: Thresholds
+  # Section 4: Thresholds
   - type: grid
     title: Threshold Settings
     cards:
@@ -206,7 +104,7 @@ sections:
           - type: numeric-input
             mode: box
 
-  # Section 8: Quick Actions
+  # Section 5: Quick Actions
   - type: grid
     title: Quick Actions
     cards:
@@ -244,7 +142,7 @@ sections:
           action: call-service
           service: solar_router.stop_heating
 
-  # Section 9: Temperature History
+  # Section 6: Temperature History
   - type: grid
     title: Temperature History
     cards:
@@ -254,7 +152,7 @@ sections:
           - entity: sensor.solar_router_tank_temp_estimate
             name: Tank Temperature
 
-  # Section 10: Heating History
+  # Section 7: Heating History
   - type: grid
     title: Heating History
     cards:
@@ -267,17 +165,3 @@ sections:
             name: Solar OK
           - entity: binary_sensor.solar_router_battery_sufficient
             name: Battery OK
-
-  # Section 11: Source Data
-  - type: grid
-    title: Source Data
-    cards:
-      - type: tile
-        entity: sensor.solar_router_battery_soc_mirror
-        name: Battery SoC
-        icon: mdi:battery
-
-      - type: tile
-        entity: sensor.solar_router_solar_power_mirror
-        name: Solar Power
-        icon: mdi:solar-panel
