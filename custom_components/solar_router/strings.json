@@ -1,0 +1,229 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Solar Router Setup",
+        "description": "Configure your solar router for intelligent water heater control.",
+        "data": {
+          "name": "Name"
+        }
+      },
+      "entities": {
+        "title": "Entity Configuration",
+        "description": "Select the entities from your Victron integration and heater control.",
+        "data": {
+          "battery_soc_entity": "Battery State of Charge",
+          "solar_power_entity": "Solar Power Production",
+          "grid_power_entity": "Grid Power (optional)",
+          "battery_power_entity": "Battery Power (optional)",
+          "heater_switch_entity": "Water Heater Switch",
+          "heater_power_entity": "Heater Power Consumption (optional)"
+        }
+      },
+      "water_tank": {
+        "title": "Water Tank Configuration",
+        "description": "Configure your water tank parameters for accurate temperature estimation.",
+        "data": {
+          "tank_volume": "Tank Volume",
+          "heater_wattage": "Heater Power",
+          "target_temp": "Target Temperature",
+          "min_temp": "Minimum Usable Temperature",
+          "tank_heat_loss_rate": "Heat Loss Rate",
+          "cold_water_temp": "Cold Water Temperature",
+          "ambient_temp": "Ambient Temperature"
+        }
+      },
+      "thresholds": {
+        "title": "Routing Thresholds",
+        "description": "Set the thresholds for solar routing decisions.",
+        "data": {
+          "min_soc": "Minimum Battery SoC to Start Routing",
+          "min_solar_power": "Minimum Solar Power to Route",
+          "min_daily_heating": "Minimum Daily Heating Time"
+        }
+      },
+      "time_windows": {
+        "title": "Time Windows",
+        "description": "Configure time windows for solar routing and off-peak fallback.",
+        "data": {
+          "solar_start": "Solar Window Start",
+          "solar_end": "Solar Window End",
+          "offpeak_start": "Off-Peak Start",
+          "offpeak_end": "Off-Peak End"
+        }
+      },
+      "usage_patterns": {
+        "title": "Usage Patterns",
+        "description": "Configure your typical hot water usage patterns.",
+        "data": {
+          "shower_duration": "Average Shower Duration",
+          "shower_flow_rate": "Shower Flow Rate",
+          "dish_duration": "Average Dish Washing Duration",
+          "dish_flow_rate": "Dish Washing Flow Rate"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "invalid_entity": "Invalid entity selected"
+    },
+    "abort": {
+      "already_configured": "Solar Router is already configured"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Solar Router Options",
+        "description": "Select a category to configure.",
+        "menu_options": {
+          "entities": "Entity Configuration",
+          "water_tank": "Water Tank Settings",
+          "thresholds": "Routing Thresholds",
+          "time_windows": "Time Windows",
+          "usage_patterns": "Usage Patterns"
+        }
+      },
+      "entities": {
+        "title": "Entity Configuration",
+        "data": {
+          "battery_soc_entity": "Battery State of Charge",
+          "solar_power_entity": "Solar Power Production",
+          "grid_power_entity": "Grid Power (optional)",
+          "battery_power_entity": "Battery Power (optional)",
+          "heater_switch_entity": "Water Heater Switch",
+          "heater_power_entity": "Heater Power Consumption (optional)"
+        }
+      },
+      "water_tank": {
+        "title": "Water Tank Settings",
+        "data": {
+          "tank_volume": "Tank Volume",
+          "heater_wattage": "Heater Power",
+          "target_temp": "Target Temperature",
+          "min_temp": "Minimum Usable Temperature",
+          "tank_heat_loss_rate": "Heat Loss Rate",
+          "cold_water_temp": "Cold Water Temperature",
+          "ambient_temp": "Ambient Temperature"
+        }
+      },
+      "thresholds": {
+        "title": "Routing Thresholds",
+        "data": {
+          "min_soc": "Minimum Battery SoC",
+          "min_solar_power": "Minimum Solar Power",
+          "min_daily_heating": "Minimum Daily Heating"
+        }
+      },
+      "time_windows": {
+        "title": "Time Windows",
+        "data": {
+          "solar_start": "Solar Window Start",
+          "solar_end": "Solar Window End",
+          "offpeak_start": "Off-Peak Start",
+          "offpeak_end": "Off-Peak End"
+        }
+      },
+      "usage_patterns": {
+        "title": "Usage Patterns",
+        "data": {
+          "shower_duration": "Average Shower Duration",
+          "shower_flow_rate": "Shower Flow Rate",
+          "dish_duration": "Average Dish Washing Duration",
+          "dish_flow_rate": "Dish Washing Flow Rate"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "tank_temp_estimate": {
+        "name": "Tank Temperature (Estimated)"
+      },
+      "daily_heating_time": {
+        "name": "Daily Heating Time"
+      },
+      "daily_heating_energy": {
+        "name": "Daily Heating Energy"
+      },
+      "energy_content": {
+        "name": "Tank Energy Content"
+      },
+      "estimated_showers": {
+        "name": "Estimated Showers Available"
+      },
+      "time_to_target": {
+        "name": "Time to Target Temperature"
+      },
+      "time_to_cold": {
+        "name": "Time Until Cold"
+      },
+      "current_rule": {
+        "name": "Active Rule"
+      },
+      "heating_mode": {
+        "name": "Heating Mode"
+      },
+      "heating_sessions_today": {
+        "name": "Heating Sessions Today"
+      },
+      "solar_excess": {
+        "name": "Solar Excess Power"
+      },
+      "battery_soc": {
+        "name": "Battery SoC"
+      },
+      "solar_power": {
+        "name": "Solar Power"
+      }
+    },
+    "binary_sensor": {
+      "heater_should_run": {
+        "name": "Heater Should Run"
+      },
+      "is_heating": {
+        "name": "Currently Heating"
+      },
+      "solar_sufficient": {
+        "name": "Solar Power Sufficient"
+      },
+      "battery_sufficient": {
+        "name": "Battery Level Sufficient"
+      },
+      "fallback_needed": {
+        "name": "Fallback Heating Needed"
+      },
+      "auto_mode_active": {
+        "name": "Auto Mode Active"
+      },
+      "tank_cold": {
+        "name": "Tank Temperature Low"
+      },
+      "tank_hot": {
+        "name": "Tank Temperature OK"
+      }
+    },
+    "switch": {
+      "auto_mode": {
+        "name": "Auto Mode"
+      },
+      "offpeak_fallback": {
+        "name": "Off-Peak Fallback"
+      }
+    },
+    "number": {
+      "min_soc_threshold": {
+        "name": "Minimum Battery SoC"
+      },
+      "min_solar_power_threshold": {
+        "name": "Minimum Solar Power"
+      },
+      "min_daily_heating_threshold": {
+        "name": "Minimum Daily Heating"
+      },
+      "tank_temperature_calibration": {
+        "name": "Tank Temperature Calibration"
+      }
+    }
+  }
+}

@@ -1,0 +1,135 @@
+force_heating:
+  name: Force Heating
+  description: Force the water heater to turn on for a specified duration
+  fields:
+    duration:
+      name: Duration
+      description: Duration in minutes to force heating
+      required: false
+      default: 60
+      selector:
+        number:
+          min: 1
+          max: 480
+          unit_of_measurement: minutes
+
+stop_heating:
+  name: Stop Heating
+  description: Stop heating immediately
+
+set_tank_temp:
+  name: Set Tank Temperature
+  description: Manually set the estimated tank temperature (for calibration)
+  fields:
+    temperature:
+      name: Temperature
+      description: The temperature to set
+      required: true
+      selector:
+        number:
+          min: 10
+          max: 80
+          unit_of_measurement: "°C"
+
+apply_usage_event:
+  name: Apply Usage Event
+  description: Record a water usage event (adjusts temperature estimate)
+  fields:
+    event:
+      name: Event Type
+      description: The type of water usage event
+      required: true
+      selector:
+        select:
+          options:
+            - value: shower
+              label: Shower
+            - value: dishes
+              label: Dishes
+
+reset_daily_stats:
+  name: Reset Daily Statistics
+  description: Reset daily heating time and energy counters
+
+enable_rule:
+  name: Enable Rule
+  description: Enable a routing rule
+  fields:
+    rule_name:
+      name: Rule Name
+      description: The name of the rule to enable
+      required: true
+      selector:
+        text:
+
+disable_rule:
+  name: Disable Rule
+  description: Disable a routing rule
+  fields:
+    rule_name:
+      name: Rule Name
+      description: The name of the rule to disable
+      required: true
+      selector:
+        text:
+
+remove_rule:
+  name: Remove Rule
+  description: Remove a routing rule
+  fields:
+    rule_name:
+      name: Rule Name
+      description: The name of the rule to remove
+      required: true
+      selector:
+        text:
+
+set_rule:
+  name: Set Rule
+  description: Create or update a routing rule
+  fields:
+    name:
+      name: Rule Name
+      description: Unique name for the rule
+      required: true
+      selector:
+        text:
+    description:
+      name: Description
+      description: Human-readable description
+      required: false
+      selector:
+        text:
+    enabled:
+      name: Enabled
+      description: Whether the rule is active
+      required: false
+      default: true
+      selector:
+        boolean:
+    priority:
+      name: Priority
+      description: Rule priority (0-100, higher wins)
+      required: false
+      default: 50
+      selector:
+        number:
+          min: 0
+          max: 100
+    conditions:
+      name: Conditions
+      description: List of conditions that must all be true
+      required: true
+      selector:
+        object:
+    action:
+      name: Action
+      description: Action to take when conditions are met
+      required: true
+      selector:
+        select:
+          options:
+            - value: turn_on
+              label: Turn On Heater
+            - value: turn_off
+              label: Turn Off Heater
