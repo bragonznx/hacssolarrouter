@@ -149,6 +149,7 @@ SERVICE_FORCE_HEATING = "force_heating"
 SERVICE_STOP_HEATING = "stop_heating"
 SERVICE_RESET_DAILY_STATS = "reset_daily_stats"
 SERVICE_SET_TANK_TEMP = "set_tank_temp"
+SERVICE_APPLY_USAGE = "apply_usage_event"
 
 # Events
 EVENT_HEATING_STARTED = f"{DOMAIN}_heating_started"

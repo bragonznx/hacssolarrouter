@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <!-- Sun gradient -->
+    <linearGradient id="sunGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD54F"/>
+      <stop offset="100%" style="stop-color:#FF9800"/>
+    </linearGradient>
+    <!-- Water gradient -->
+    <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4FC3F7"/>
+      <stop offset="100%" style="stop-color:#0288D1"/>
+    </linearGradient>
+    <!-- Router gradient -->
+    <linearGradient id="routerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#66BB6A"/>
+      <stop offset="100%" style="stop-color:#388E3C"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background circle -->
+  <circle cx="128" cy="128" r="120" fill="#FAFAFA" stroke="#E0E0E0" stroke-width="2"/>
+
+  <!-- Sun in top-left -->
+  <g transform="translate(55, 55)">
+    <!-- Sun rays -->
+    <g fill="url(#sunGrad)">
+      <rect x="20" y="-4" width="10" height="8" rx="2" transform="rotate(0 25 25)"/>
+      <rect x="20" y="-4" width="10" height="8" rx="2" transform="rotate(45 25 25)"/>
+      <rect x="20" y="-4" width="10" height="8" rx="2" transform="rotate(90 25 25)"/>
+      <rect x="20" y="-4" width="10" height="8" rx="2" transform="rotate(135 25 25)"/>
+      <rect x="20" y="-4" width="10" height="8" rx="2" transform="rotate(180 25 25)"/>
+      <rect x="20" y="-4" width="10" height="8" rx="2" transform="rotate(225 25 25)"/>
+      <rect x="20" y="-4" width="10" height="8" rx="2" transform="rotate(270 25 25)"/>
+      <rect x="20" y="-4" width="10" height="8" rx="2" transform="rotate(315 25 25)"/>
+    </g>
+    <!-- Sun center -->
+    <circle cx="25" cy="25" r="16" fill="url(#sunGrad)"/>
+  </g>
+
+  <!-- Routing arrows (energy flow) -->
+  <g stroke="url(#routerGrad)" stroke-width="4" fill="none" stroke-linecap="round">
+    <!-- Arrow from sun to water heater -->
+    <path d="M 95 95 Q 128 110 145 140" stroke-dasharray="8,4">
+      <animate attributeName="stroke-dashoffset" from="0" to="-12" dur="1s" repeatCount="indefinite"/>
+    </path>
+    <!-- Arrow head -->
+    <polygon points="145,140 138,132 142,142 132,138" fill="url(#routerGrad)" stroke="none"/>
+  </g>
+
+  <!-- Water heater / tank -->
+  <g transform="translate(135, 130)">
+    <!-- Tank body -->
+    <rect x="0" y="0" width="60" height="80" rx="8" fill="url(#waterGrad)" opacity="0.9"/>
+    <!-- Tank top -->
+    <ellipse cx="30" cy="5" rx="28" ry="8" fill="#29B6F6"/>
+    <!-- Water level indicator lines -->
+    <line x1="10" y1="25" x2="50" y2="25" stroke="white" stroke-width="2" opacity="0.5"/>
+    <line x1="10" y1="40" x2="50" y2="40" stroke="white" stroke-width="2" opacity="0.5"/>
+    <line x1="10" y1="55" x2="50" y2="55" stroke="white" stroke-width="2" opacity="0.5"/>
+    <!-- Temperature indicator -->
+    <g transform="translate(25, 65)">
+      <rect x="-3" y="-15" width="6" height="20" rx="3" fill="white"/>
+      <circle cx="0" cy="8" r="6" fill="#F44336"/>
+      <rect x="-2" y="-10" width="4" height="15" fill="#F44336"/>
+    </g>
+  </g>
+
+  <!-- Wifi/signal waves (routing symbol) -->
+  <g transform="translate(50, 150)" stroke="url(#routerGrad)" fill="none" stroke-width="3" stroke-linecap="round">
+    <path d="M 25 30 Q 25 20 35 15" opacity="0.4"/>
+    <path d="M 20 35 Q 20 20 40 10" opacity="0.6"/>
+    <path d="M 15 40 Q 15 15 45 5" opacity="0.8"/>
+    <circle cx="30" cy="38" r="5" fill="url(#routerGrad)"/>
+  </g>
+
+  <!-- Solar panel icon (small, bottom) -->
+  <g transform="translate(85, 195)">
+    <rect x="0" y="0" width="35" height="25" rx="2" fill="#37474F"/>
+    <!-- Grid lines -->
+    <line x1="0" y1="8" x2="35" y2="8" stroke="#546E7A" stroke-width="1"/>
+    <line x1="0" y1="16" x2="35" y2="16" stroke="#546E7A" stroke-width="1"/>
+    <line x1="12" y1="0" x2="12" y2="25" stroke="#546E7A" stroke-width="1"/>
+    <line x1="24" y1="0" x2="24" y2="25" stroke="#546E7A" stroke-width="1"/>
+    <!-- Reflection -->
+    <rect x="2" y="2" width="8" height="5" fill="#78909C" opacity="0.5"/>
+  </g>
+</svg>

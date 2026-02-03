@@ -26,9 +26,6 @@ from .rule_engine import Rule, RuleAction, RuleActionType, RuleCondition, RuleCo
 
 _LOGGER = logging.getLogger(__name__)
 
-# Service names
-SERVICE_APPLY_USAGE = "apply_usage_event"
-
 # Service schemas
 SERVICE_FORCE_HEATING_SCHEMA = vol.Schema(
     {
